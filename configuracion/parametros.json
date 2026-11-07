@@ -1,0 +1,42 @@
+{
+  "semilla": 42,
+  "busqueda": {
+    "heuristica": "manhattan"
+  },
+  "hill_climbing": {
+    "soluciones_iniciales": 10,
+    "iteraciones_maximas": 50
+  },
+  "recocido_simulado": {
+    "temperatura_inicial": 120.0,
+    "enfriamiento": 0.95,
+    "iteraciones": 250
+  },
+  "algoritmo_genetico": {
+    "tamano_poblacion": 20,
+    "generaciones": 35,
+    "probabilidad_mutacion": 0.15
+  },
+  "teoria_juegos": {
+    "matriz_pagos": [
+      [
+        7,
+        4,
+        6
+      ],
+      [
+        5,
+        8,
+        3
+      ],
+      [
+        2,
+        6,
+        9
+      ]
+    ]
+  },
+  "minimax": {
+    "profundidad": 3
+  }
+}
