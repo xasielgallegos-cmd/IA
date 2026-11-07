@@ -1,0 +1,3 @@
+=== RESULTADOS DE BUSQUEDA ===
+algoritmo=Greedy estado=ok costo=22 nodos=23 tiempo_segundos=4.7583998821210116e-05
+algoritmo=A* estado=ok costo=22 nodos=124 tiempo_segundos=0.00017624999964027666

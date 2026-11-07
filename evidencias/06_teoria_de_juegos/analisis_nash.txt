@@ -1,0 +1,10 @@
+=== TEORIA DE JUEGOS ===
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+interpretacion: juego de pago comun; ambos jugadores maximizan la matriz indicada
+matriz_de_pagos:
+7 4 6
+5 8 3
+2 6 9
+mejores_respuestas: {"filas": [{"fila": 0, "mejor": 7, "columnas": [0]}, {"fila": 1, "mejor": 8, "columnas": [1]}, {"fila": 2, "mejor": 9, "columnas": [2]}], "columnas": [{"columna": 0, "mejor": 7, "filas": [0]}, {"columna": 1, "mejor": 8, "filas": [1]}, {"columna": 2, "mejor": 9, "filas": [2]}]}
+equilibrios_nash: [[0, 0], [1, 1], [2, 2]]
+estrategias_dominantes: {"filas": [], "columnas": []}

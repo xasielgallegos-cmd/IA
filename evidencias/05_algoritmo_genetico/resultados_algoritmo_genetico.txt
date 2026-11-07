@@ -1,0 +1,16 @@
+=== GENÉTICO ===
+modulo: Genético
+estado: ok
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+fecha_hora_utc: 2026-11-07T02:33:16.009891+00:00
+escenario: principal
+semilla: 42
+parametros: {"semilla": 42, "busqueda": {"heuristica": "manhattan"}, "hill_climbing": {"soluciones_iniciales": 10, "iteraciones_maximas": 50}, "recocido_simulado": {"temperatura_inicial": 120.0, "enfriamiento": 0.95, "iteraciones": 250}, "algoritmo_genetico": {"tamano_poblacion": 20, "generaciones": 35, "probabilidad_mutacion": 0.15}, "teoria_juegos": {"matriz_pagos": [[7, 4, 6], [5, 8, 3], [2, 6, 9]]}, "minimax": {"profundidad": 3}}
+mejor_permuta: [[5, 2], [9, 3], [8, 8], [2, 9]]
+mejor_costo: 37.0
+evaluaciones: 720
+tiempo_segundos: 0.10755520900056581
+solucion_factible: true
+promedio_final: 44.1
+desviacion_estandar: 6.758230849159143
+puntos_historial: 36

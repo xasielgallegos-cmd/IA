@@ -1,0 +1,14 @@
+=== ESTADISTICAS DE LA EJECUCION ===
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+cantidad_corridas_por_algoritmo: 1
+La media corresponde al unico resultado de esta ejecucion; la desviacion estandar muestral requiere al menos dos corridas.
+mejor_ruta_encontrada: Greedy costo=22
+mejor_orden_de_entregas_encontrado: Hill Climbing costo=37.0
+algoritmo=Greedy estado=ok costo=22 media_corridas_n=1:22 desviacion_estandar_corridas=no_aplicable promedio_interno=None desviacion_estandar_interna=None tiempo_segundos=4.7583998821210116e-05 nodos_evaluados=23 corridas_exitosas=1 corridas_fallidas=0
+algoritmo=A* estado=ok costo=22 media_corridas_n=1:22 desviacion_estandar_corridas=no_aplicable promedio_interno=None desviacion_estandar_interna=None tiempo_segundos=0.00017624999964027666 nodos_evaluados=124 corridas_exitosas=1 corridas_fallidas=0
+algoritmo=Hill Climbing estado=ok costo=37.0 media_corridas_n=1:37.0 desviacion_estandar_corridas=no_aplicable promedio_interno=37.8 desviacion_estandar_interna=1.0327955589886446 tiempo_segundos=0.02662258300006215 nodos_evaluados=155 corridas_exitosas=1 corridas_fallidas=0
+algoritmo=Recocido simulado estado=ok costo=37.0 media_corridas_n=1:37.0 desviacion_estandar_corridas=no_aplicable promedio_interno=46.416 desviacion_estandar_interna=5.785571306393645 tiempo_segundos=0.039074750000509084 nodos_evaluados=250 corridas_exitosas=1 corridas_fallidas=0
+algoritmo=Genético estado=ok costo=37.0 media_corridas_n=1:37.0 desviacion_estandar_corridas=no_aplicable promedio_interno=44.1 desviacion_estandar_interna=6.758230849159143 tiempo_segundos=0.10755520900056581 nodos_evaluados=720 corridas_exitosas=1 corridas_fallidas=0
+algoritmo=Teoría de juegos estado=ok resultado=no_disponible media_corridas_n=1:no_aplicable desviacion_estandar_corridas=no_aplicable promedio_interno=None desviacion_estandar_interna=None tiempo_segundos=0.00015129200073715765 nodos_evaluados=None corridas_exitosas=1 corridas_fallidas=0
+algoritmo=Minimax estado=ok valor=4 media_corridas_n=1:no_aplicable desviacion_estandar_corridas=no_aplicable promedio_interno=None desviacion_estandar_interna=None tiempo_segundos=7.374999768217094e-06 nodos_evaluados=13 corridas_exitosas=1 corridas_fallidas=0
+algoritmo=Alfa-beta estado=ok valor=4 media_corridas_n=1:no_aplicable desviacion_estandar_corridas=no_aplicable promedio_interno=None desviacion_estandar_interna=None tiempo_segundos=8.667000656714663e-06 nodos_evaluados=11 corridas_exitosas=1 corridas_fallidas=0

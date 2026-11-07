@@ -1,0 +1,11 @@
+=== ESCENARIO LOGISTICO ===
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+fecha_hora_utc: 2026-11-07T02:33:16.009891+00:00
+grid_size: 12
+inicio: [0, 0]
+destino: [11, 11]
+entregas: [[2, 9], [5, 2], [8, 8], [9, 3]]
+obstaculos: [[2, 6], [3, 3], [3, 4], [3, 5], [6, 5], [6, 6], [6, 7], [8, 9], [9, 9]]
+recursos_disponibles: {"transporte": 12, "combustible": 18}
+restricciones: {"capacidad": 8, "maximo_beneficio": 10}
+competidor: {"modificacion_recursos": {"combustible": -2}, "costo_adicional": 1}

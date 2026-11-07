@@ -1,0 +1,13 @@
+=== BUSQUEDA HEURISTICA ===
+modulo: A*
+estado: ok
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+fecha_hora_utc: 2026-11-07T02:33:16.009891+00:00
+escenario: principal
+semilla: 42
+parametros: {"semilla": 42, "busqueda": {"heuristica": "manhattan"}, "hill_climbing": {"soluciones_iniciales": 10, "iteraciones_maximas": 50}, "recocido_simulado": {"temperatura_inicial": 120.0, "enfriamiento": 0.95, "iteraciones": 250}, "algoritmo_genetico": {"tamano_poblacion": 20, "generaciones": 35, "probabilidad_mutacion": 0.15}, "teoria_juegos": {"matriz_pagos": [[7, 4, 6], [5, 8, 3], [2, 6, 9]]}, "minimax": {"profundidad": 3}}
+ruta: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10], [0, 11], [1, 11], [2, 11], [3, 11], [4, 11], [5, 11], [6, 11], [7, 11], [8, 11], [9, 11], [10, 11], [11, 11]]
+costo: 22
+nodos_explorados: 124
+tiempo_segundos: 0.00017624999964027666
+solucion_factible: true
