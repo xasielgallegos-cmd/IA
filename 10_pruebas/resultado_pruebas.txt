@@ -1,0 +1,5 @@
+codigo_salida_pytest: 0
+estado: OK
+--- salida real de pytest ---
+.....................                                                    [100%]
+21 passed in 0.06s

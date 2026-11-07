@@ -1,0 +1,1 @@
+"""Módulos para decisiones adversarias."""

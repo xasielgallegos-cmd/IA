@@ -1,0 +1,29 @@
+=== MINIMAX Y ALFA-BETA ===
+nota: los algoritmos evaluan el arbol de decisiones de ejemplo definido en sus modulos; no es una simulacion adversaria conectada al escenario logistico.
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+modulo: Minimax
+estado: ok
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+fecha_hora_utc: 2026-11-07T02:33:16.009891+00:00
+escenario: principal
+semilla: 42
+parametros: {"semilla": 42, "busqueda": {"heuristica": "manhattan"}, "hill_climbing": {"soluciones_iniciales": 10, "iteraciones_maximas": 50}, "recocido_simulado": {"temperatura_inicial": 120.0, "enfriamiento": 0.95, "iteraciones": 250}, "algoritmo_genetico": {"tamano_poblacion": 20, "generaciones": 35, "probabilidad_mutacion": 0.15}, "teoria_juegos": {"matriz_pagos": [[7, 4, 6], [5, 8, 3], [2, 6, 9]]}, "minimax": {"profundidad": 3}}
+valor: 4
+nodos_visitados: 13
+tiempo_segundos: 7.374999768217094e-06
+solucion_factible: true
+arbol: {"valor": null, "maximizando": true, "hijos": [{"valor": null, "maximizando": false, "hijos": [{"valor": 5}, {"valor": 2}, {"valor": 7}]}, {"valor": null, "maximizando": false, "hijos": [{"valor": 1}, {"valor": 3}, {"valor": 9}]}, {"valor": null, "maximizando": false, "hijos": [{"valor": 8}, {"valor": 6}, {"valor": 4}]}]}
+modulo: Alfa-beta
+estado: ok
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+fecha_hora_utc: 2026-11-07T02:33:16.009891+00:00
+escenario: principal
+semilla: 42
+parametros: {"semilla": 42, "busqueda": {"heuristica": "manhattan"}, "hill_climbing": {"soluciones_iniciales": 10, "iteraciones_maximas": 50}, "recocido_simulado": {"temperatura_inicial": 120.0, "enfriamiento": 0.95, "iteraciones": 250}, "algoritmo_genetico": {"tamano_poblacion": 20, "generaciones": 35, "probabilidad_mutacion": 0.15}, "teoria_juegos": {"matriz_pagos": [[7, 4, 6], [5, 8, 3], [2, 6, 9]]}, "minimax": {"profundidad": 3}}
+valor: 4
+nodos_visitados: 11
+nodos_podados: 2
+tiempo_segundos: 8.667000656714663e-06
+solucion_factible: true
+arbol: {"valor": null, "maximizando": true, "hijos": [{"valor": null, "maximizando": false, "hijos": [{"valor": 5}, {"valor": 2}, {"valor": 7}]}, {"valor": null, "maximizando": false, "hijos": [{"valor": 1}, {"valor": 3}, {"valor": 9}]}, {"valor": null, "maximizando": false, "hijos": [{"valor": 8}, {"valor": 6}, {"valor": 4}]}]}
+equivalencia_de_valor: True

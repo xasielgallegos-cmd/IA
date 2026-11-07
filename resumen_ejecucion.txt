@@ -1,0 +1,11 @@
+=== ESTADO DE INTEGRACION ===
+run_id: 54e71c3acecb4bb1971844a957f45ff8
+fecha_hora_utc: 2026-11-07T02:33:16.009891+00:00
+modulo=Greedy estado=ok resultado={"costo": 22, "nodos_explorados": 23, "solucion_factible": true} mensaje_error=ninguno
+modulo=A* estado=ok resultado={"costo": 22, "nodos_explorados": 124, "solucion_factible": true} mensaje_error=ninguno
+modulo=Hill Climbing estado=ok resultado={"desviacion_estandar": 1.0327955589886446, "evaluaciones": 155, "mejor_costo": 37.0, "promedio": 37.8, "solucion_factible": true} mensaje_error=ninguno
+modulo=Recocido simulado estado=ok resultado={"desviacion_estandar": 5.785571306393645, "evaluaciones": 250, "mejor_costo": 37.0, "promedio": 46.416, "solucion_factible": true} mensaje_error=ninguno
+modulo=Genético estado=ok resultado={"desviacion_estandar": 6.758230849159143, "evaluaciones": 720, "mejor_costo": 37.0, "promedio": 44.1, "solucion_factible": true} mensaje_error=ninguno
+modulo=Teoría de juegos estado=ok resultado={"equilibrios_nash": [[0, 0], [1, 1], [2, 2]], "solucion_factible": true} mensaje_error=ninguno
+modulo=Minimax estado=ok resultado={"nodos_visitados": 13, "valor": 4} mensaje_error=ninguno
+modulo=Alfa-beta estado=ok resultado={"nodos_podados": 2, "nodos_visitados": 11, "valor": 4} mensaje_error=ninguno

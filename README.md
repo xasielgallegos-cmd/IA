@@ -1,64 +1,123 @@
-# Diseño e implementación
+# SISTEMA_LOGISTICO_IA
 
-## Arquitectura
+Sistema académico local para experimentar con búsqueda de rutas en cuadrícula, optimización del orden de entregas, una matriz de pagos y búsqueda adversaria en un árbol de ejemplo. Los resultados se calculan durante cada ejecución; los archivos bajo `datos/` son CSV y las evidencias bajo `evidencias/` son texto y CSV.
 
-`src/main.py` coordina la lectura de configuración, validaciones, ejecución y generación de evidencias. El escenario compartido se representa con `Escenario`; `ModeloLogistico` evalúa secuencias de entregas concatenando el inicio, cada entrega y el destino. Los experimentos registran tanto resultados por algoritmo como filas de estado por módulo.
+## Requisitos
 
-La generación de evidencia es una fase de presentación que recibe el objeto de resultados de la corrida actual. No vuelve a calcular algoritmos ni ejecuta pruebas. Los CSV originales conservan los datos; los TXT hacen legible el resumen y registran el mismo `run_id`.
+- Python 3.11 o posterior.
+- Pytest para ejecutar las pruebas.
 
-## Búsqueda y costos
+No se requiere Matplotlib: el formato de evidencia vigente es TXT/CSV.
 
-La cuadrícula utiliza movimientos ortogonales. En `costos_movimiento.csv`, cada fila asigna el costo de entrada a una celda; si no hay una entrada para la celda, el paso cuesta una unidad. Obstáculos no son transitables.
+## Léeme: instrucciones de ejecución en macOS
 
-Greedy prioriza la distancia Manhattan y devuelve una ruta válida si encuentra una, sin garantía de optimalidad. A* usa el costo acumulado más una Manhattan admisible escalada por el mínimo costo de movimiento positivo de la configuración. Los costos inválidos se rechazan.
+Abre Terminal y entra a la carpeta del proyecto:
 
-## Optimización de entregas
+```bash
+cd /Users/Xas/Downloads/p
+```
 
-`ModeloLogistico.evaluar_permuta` verifica que la permutación contenga todas las entregas requeridas exactamente una vez. Evalúa cada segmento con A* y suma su costo. Hill Climbing intercambia pares; recocido simulado aplica aceptación probabilística; el algoritmo genético realiza selección, cruce y mutación. Cada optimizador recibe la semilla configurada. Sus conteos de evaluación reflejan las evaluaciones realizadas y sus historiales se escriben como CSV.
+### 1. Preparar el entorno (solo la primera vez)
 
-La configuración contiene recursos y restricciones nominales, pero aún no especifica consumo de recursos por tramo, presupuesto ni demanda de cada entrega. No se restringe la ruta por combustible/capacidad hasta que esas unidades/reglas estén definidas.
+Se recomienda crear y activar un entorno virtual:
 
-## Teoría de juegos y adversarios
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-La matriz de pagos actual es de pago común: ambos jugadores maximizan la misma celda. Las mejores respuestas se derivan de filas y columnas y Nash es su intersección. La matriz puede provenir de `parametros.json`; las evidencias registran la matriz usada y el análisis calculado.
+Instala los requisitos del proyecto:
 
-Minimax y alfa-beta procesan el árbol estático contenido en sus módulos. Alfa-beta usa los mismos valores y orden de ramas que Minimax, produciendo el mismo valor y visitando no más nodos en el caso configurado. El árbol es didáctico: no se conecta a los recursos, rutas ni decisiones de un competidor definidos en el escenario.
+```bash
+python -m pip install -r requirements.txt
+```
 
-## Ejecuciones y reproducibilidad
+Si ya tienes un entorno virtual, actívalo antes de ejecutar los comandos. En macOS, si el comando `python3` no está disponible, instala Python 3 y vuelve a abrir Terminal.
 
-Cada invocación del sistema crea un identificador y hora UTC. Los CSV de resumen relacionan algoritmo, escenario, semilla, parámetros, estado, costo, tiempo y métricas. `registro_integracion.csv` y `registro_ejecuciones.csv` son acumulativos para preservar el historial; se rechaza un esquema incompatible en lugar de sobrescribir el archivo. Los CSV de detalle describen la corrida más reciente.
+### 2. Ejecutar el sistema
 
-El protocolo actual realiza una ejecución por algoritmo y por escenario principal. Una desviación estándar muestral entre corridas no se calcula con una sola corrida. Las desviaciones internas informadas por optimizadores se refieren a sus propias muestras de búsqueda y no se confunden con estadísticas de ejecuciones independientes.
+Desde la raíz del proyecto:
 
-## Errores E001–E008
+```bash
+PYTHONPATH=. python3 -m src.main
+```
 
-| Código | Condición validada |
-|---|---|
-| E001 | Falta el archivo de escenario |
-| E002 | JSON inválido o raíz JSON no es un objeto |
-| E003 | Coordenada inválida, fuera de cuadrícula o entregas duplicadas |
-| E004 | Inicio, destino o entrega sobre un obstáculo |
-| E005 | Recurso solicitado no declarado o disponible insuficiente para un requerimiento explícito |
-| E006 | No existe ruta entre los puntos de un tramo |
-| E007 | Parámetros, costos de movimiento o matriz de pagos inválidos |
-| E008 | Una secuencia no contiene cada entrega exactamente una vez |
+El programa ejecuta los algoritmos y actualiza sus resultados en `datos/` y las evidencias TXT/CSV en `evidencias/`. Para ejecutarlo de nuevo, usa el mismo comando. Cada corrida genera un identificador nuevo; los archivos de resumen reflejan la corrida más reciente y los registros de integración conservan las corridas anteriores.
 
-E005 se puede comprobar cuando se proporciona un diccionario explícito de requerimientos; el escenario actual no declara requerimientos de combustible/transporte por ruta.
-
-## Pruebas y evidencias de pruebas
-
-Las pruebas usan Pytest y se ejecutan independientemente:
+### 3. Ejecutar las pruebas
 
 ```bash
 PYTHONPATH=. python3 -m pytest -q
 ```
 
-El comando `python3 -m src.evidencias.registrar_pruebas` ejecuta la suite, guarda la salida real, conteos y código de salida. El programa principal no lanza Pytest ni altera los resultados de la suite.
+### 4. Guardar la evidencia de las pruebas
 
-## Limitaciones pendientes
+Este comando vuelve a ejecutar Pytest y guarda su salida real, conteos y código de salida:
 
-- Solo se configura un escenario y una corrida externa por algoritmo; no hay barrido de escenarios ni protocolo de repeticiones.
-- No están formalizadas las unidades de recursos, presupuesto, capacidad ni su consumo.
-- El juego tiene una sola matriz común; no modela pagos independientes para dos jugadores.
-- El árbol de Minimax/alfa-beta es un ejemplo independiente del sistema logístico.
-- Las estadísticas entre corridas son limitadas mientras no se defina cuántas repeticiones deben realizarse.
+```bash
+PYTHONPATH=. python3 -m src.evidencias.registrar_pruebas
+```
+
+Los resultados quedan en:
+
+- `evidencias/10_pruebas/resultado_pruebas.txt`
+- `evidencias/10_pruebas/resumen_pruebas.csv`
+
+Las pruebas son independientes: no se ejecutan al iniciar `src.main`.
+
+### Ejecución rápida después de la preparación
+
+Para una corrida normal:
+
+```bash
+cd /Users/Xas/Downloads/p
+PYTHONPATH=. python3 -m src.main
+```
+
+Para validar el proyecto y actualizar la evidencia de Pytest:
+
+```bash
+cd /Users/Xas/Downloads/p
+PYTHONPATH=. python3 -m pytest -q
+PYTHONPATH=. python3 -m src.evidencias.registrar_pruebas
+```
+
+## Flujo y componentes
+
+1. `src/main.py` carga JSON/CSV de configuración, valida escenario y parámetros, llama a los experimentos y genera evidencias.
+2. `src/escenario.py` representa la cuadrícula, los puntos, obstáculos y costos de entrada a celdas.
+3. `src/busqueda/greedy.py` ejecuta Greedy Best-First Search. Es heurístico y no garantiza el menor costo.
+4. `src/busqueda/a_estrella.py` ejecuta A* con costo acumulado y distancia Manhattan escalada por el menor costo de movimiento.
+5. `src/modelo_logistico.py` evalúa recorridos que incluyen cada entrega exactamente una vez, en un orden dado, y terminan en el destino.
+6. Hill Climbing, recocido simulado y el algoritmo genético buscan permutaciones de las entregas. La semilla y los parámetros vienen de `configuracion/parametros.json`.
+7. `src/teoria_juegos/estrategias.py` analiza una matriz de pago común: ambos jugadores maximizan la misma matriz. Sus mejores respuestas y equilibrios se calculan, no se escriben como resultados fijos.
+8. Minimax y alfa-beta evalúan un árbol pequeño definido en sus módulos. Es un ejemplo de búsqueda adversaria y no está conectado a la planificación logística.
+9. `src/experimentos/ejecutar_experimentos.py` genera CSV de resultados y añade registros reales a `datos/registro_integracion.csv`.
+10. `src/experimentos/generar_graficas.py` (nombre conservado por compatibilidad) produce TXT y copia CSV de esa corrida.
+
+## Salidas
+
+- `datos/resultados_experimentos.csv`: resumen de la corrida actual, con ID, fecha, parámetros, semilla, estado, costo, tiempo y métricas disponibles.
+- `datos/busqueda/`: rutas y métricas detalladas de Greedy y A*.
+- `datos/hill_climbing.csv`, `datos/recocido_simulado.csv`, `datos/algoritmo_genetico.csv`: historiales generados por los algoritmos y metadatos de la corrida.
+- `datos/juego_teoria.csv`: pagos de la matriz analizada.
+- `datos/minimax.csv`: valor y nodos de los dos métodos adversarios.
+- `datos/registro_integracion.csv` y `datos/registro_ejecuciones.csv`: historial acumulativo por módulo y corrida; no se sobrescriben al ejecutar de nuevo.
+- `evidencias/`: resúmenes TXT y copias de presentación CSV. No se generan PNG.
+
+Una ejecución actualiza los CSV de resultados y los TXT correspondientes. El CSV acumulativo de integración conserva corridas previas. En el diseño vigente se realiza una corrida por algoritmo en un solo escenario; por eso la desviación estándar muestral entre corridas se reporta como no aplicable. Las métricas estadísticas internas de los optimizadores se etiquetan separadamente.
+
+## Validaciones y límites conocidos
+
+- E001: archivo del escenario faltante.
+- E002: JSON de escenario inválido.
+- E003: coordenadas inválidas/fuera de límites o entregas duplicadas.
+- E004: inicio, destino o entrega sobre un obstáculo.
+- E005: recurso solicitado no definido o cantidad disponible insuficiente, cuando se proporciona un requerimiento explícito.
+- E006: no existe ruta; la búsqueda devuelve `None` e infinito, y el modelo logístico identifica el tramo sin solución.
+- E007: parámetros, costos de movimiento o matriz de pagos inválidos.
+- E008: orden de entregas inválido (no contiene cada entrega exactamente una vez).
+
+El escenario declara recursos y restricciones, pero no define consumo de combustible por movimiento ni una demanda de recursos por entrega. Por ello, esos campos aún no actúan como restricciones del costo de ruta; no se atribuye al modelo una factibilidad de combustible/capacidad que no pueda calcular con la configuración actual.
+
+No se especificó un protocolo con varias repeticiones por algoritmo. El proyecto informa resultados de una corrida reproducible mediante semilla, pero no presenta esa corrida única como un análisis estadístico de múltiples ejecuciones.
